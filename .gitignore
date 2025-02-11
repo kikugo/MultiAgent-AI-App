@@ -1,0 +1,32 @@
+# .gitignore
+
+# Environment Variables
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# macOS
+.DS_Store
+
+# IDE-specific files (add others as needed)
+.idea/  # PyCharm
+.vscode/ # VS Code
+
+# Database files (if you're not using a remote database)
+chromadb/
+
+# Temporary files
+*.tmp
+temp/

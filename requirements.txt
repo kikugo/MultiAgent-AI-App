@@ -1,0 +1,18 @@
+phidata==2.7.5
+python-dotenv
+yfinance==0.2.28  # Older yfinance
+pandas==1.5.0     # Older pandas
+numpy==1.23.0     # Older numpy
+packaging
+duckduckgo-search
+fastapi
+uvicorn
+groq
+openai
+sqlalchemy
+pgvector
+psycopg[binary]
+pypdf
+streamlit
+google-generativeai
+chromadb
