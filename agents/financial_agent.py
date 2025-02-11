@@ -8,23 +8,17 @@ import time
 import random
 from dotenv import load_dotenv
 from utils.helpers import sanitize_url
-import yfinance as yf
-import pandas as pd
 from agno.models.openai import OpenAIChat
+
 
 load_dotenv()
 
 class FinancialAgent:
-    """
-    Agent for fetching and displaying financial data using yfinance and web search.
-    """
     def __init__(self):
-        """Initializes the FinancialAgent with necessary tools and configurations."""
 
         # Initialize OpenAI model
-        self.model = OpenAIChat(id="gpt-4o-mini-2024-07-18")
+        self.model = OpenAIChat(id="gpt-4o-mini-2024-07-18") # Users can change model from phi data docs
 
-        # Web search agent for general information retrieval
         self.web_search_agent = Agent(
             name="Web Search Agent",
             role="Search the web for information",
@@ -35,7 +29,6 @@ class FinancialAgent:
             markdown=True,
         )
 
-        # Finance agent for fetching financial data using yfinance tools
         self.finance_agent = Agent(
             name="Finance AI Agent",
             model=self.model,
@@ -52,7 +45,6 @@ class FinancialAgent:
             markdown=True,
         )
 
-        # Multi-agent combining web search and finance tools for comprehensive analysis
         self.multi_ai_agent = Agent(
             model=self.model,
             team=[self.web_search_agent, self.finance_agent],
@@ -64,11 +56,6 @@ class FinancialAgent:
         )
 
     def run(self, ticker=""):
-        """
-        Fetches and displays financial data for a given stock ticker.
-
-        Handles user input, displays loading spinners, and error messages.
-        """
         if ticker:
             with st.spinner(f"Fetching data for {ticker}..."):
                 try:
@@ -90,11 +77,6 @@ class FinancialAgent:
             st.warning("Please enter a stock ticker.")
 
     def fetch_data_with_retry(self, ticker):
-        """
-        Fetches data with exponential backoff for rate limiting.
-
-        Retries API calls with increasing delay if rate limit errors are encountered.
-        """
         retries = 0
         max_retries = 5
         base_delay = 1
@@ -105,7 +87,6 @@ class FinancialAgent:
                 return response
 
             except Exception as e:
-                # Handle rate limit errors specifically
                 if "rate_limit_exceeded" in str(e).lower() or "429" in str(e):
                     retries += 1
                     delay = base_delay * (2 ** retries) + random.uniform(0, 1)
