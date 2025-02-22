@@ -16,6 +16,19 @@ This Streamlit application provides a unified interface for interacting with sev
 *   **Error Handling:** Handles invalid inputs and API issues.
 *   **URL Sanitization:**  Financial Agent sanitizes URLs.
 
+## Examples
+
+Here are examples of how each tool looks:
+
+**Video Analyzer:**
+![Video Analyzer Example](preview/video_analyzer.png)
+
+**Financial Agent:**
+![Financial Agent Example](preview/financial_agent.png)
+
+**PDF Assistant:**
+![PDF Assistant Example](preview/pdf_assistant.png)
+
 ## Getting Started
 
 1.  **Clone the Repository:**
